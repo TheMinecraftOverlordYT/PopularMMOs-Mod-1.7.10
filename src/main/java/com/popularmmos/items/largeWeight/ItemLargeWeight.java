@@ -37,7 +37,7 @@ public class ItemLargeWeight extends ItemSword {
                 if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ItemLargeWeight)
                 {
 
-                    player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 2, 2));
+                    player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1, 2));
 
                 }
             }

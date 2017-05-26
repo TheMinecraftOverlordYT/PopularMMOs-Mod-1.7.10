@@ -61,20 +61,20 @@ public class FuriousArmor extends ItemArmor{
     {
         if (itemStack.getItem() == PopularItems.furiousChest)
         {
-            this.effectPlayer(player, Potion.resistance, 2);
+            this.effectPlayer(player, Potion.resistance, 1);
         }
         if (itemStack.getItem() == PopularItems.furiousLegs)
         {
-            this.effectPlayer(player, Potion.jump, 2);
+            this.effectPlayer(player, Potion.jump, 1);
         }
         if (itemStack.getItem() == PopularItems.furiousBoots)
         {
-            this.effectPlayer(player, Potion.moveSpeed, 2);
+            this.effectPlayer(player, Potion.moveSpeed, 1);
         }
 
         if (this.isWearingFullSet(player, PopularItems.furiousHelm, PopularItems.furiousChest, PopularItems.furiousLegs, PopularItems.furiousBoots))
         {
-            this.effectPlayer(player, Potion.damageBoost, 2);
+            this.effectPlayer(player, Potion.damageBoost, 1);
 
         }
     }
