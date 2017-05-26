@@ -1,0 +1,8 @@
+{
+    "PatDeath": {"category": "master", "sounds": ["PatDeath"]},
+    "PatGrunt": {"category": "master", "sounds": ["PatGrunt"]},
+    "PatSpawn": {"category": "master", "sounds": ["PatSpawn"]},
+    "PatWeightThrow": {"category": "master", "sounds": ["PatWeightThrow"]},
+    "WingFlap" : {"category": "master", "sounds": ["WingFlap"]}
+}
+    
