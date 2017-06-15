@@ -32,14 +32,10 @@ public class PopularEntities
         EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
         EntityRegistry.registerModEntity(entityClass, entityName, randomID, PopularMMOs.MODID, 30, 1, true);
         //probability, minimum group size, max group size, type of creature, biome(s) to spawn in
-         if(entityName ==  "PopularMMOs")
-         {
-             EntityRegistry.addSpawn(entityClass, 2, 0, 1, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert);
-         }
-         else if (entityName == "Jenicorn")
-         {
-             EntityRegistry.addSpawn(entityClass, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest);
-         }
+        if (entityName == "Jenicorn")
+        {
+            EntityRegistry.addSpawn(entityClass, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest);
+        }
         createEgg(randomID, solidColor, spotColor);
     }
 

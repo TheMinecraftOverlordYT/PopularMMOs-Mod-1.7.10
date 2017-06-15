@@ -55,10 +55,8 @@ public class PopularEvents extends Gui
 
     }*/
 
-
-
     @SubscribeEvent
-    public void darkDeathEvent(RenderGameOverlayEvent.Post e){
+    public void popularDeathEvent(RenderGameOverlayEvent.Post e){
         int k = e.resolution.getScaledWidth();
         int l = e.resolution.getScaledHeight();
         this.mc.entityRenderer.setupOverlayRendering();
@@ -69,30 +67,30 @@ public class PopularEvents extends Gui
         Iterator iterator = list.iterator();
 
         while(iterator.hasNext()){
-            EntityPat entitydarkopaldemon1 = (EntityPat)iterator.next();
-            double d1 = entitydarkopaldemon1.getDistanceSqToEntity(mc.thePlayer);
+            EntityPat entitypat1 = (EntityPat)iterator.next();
+            double d1 = entitypat1.getDistanceSqToEntity(mc.thePlayer);
             if (d1 < d0)
             {
                 d0 = d1;
-                entityPat = entitydarkopaldemon1;
+                entityPat = entitypat1;
             }
         }
         this.pat = entityPat;
         if(mc.gameSettings.thirdPersonView == 0 && pat != null){
             if(pat.deathTicks > 0 && pat.deathTicks < 200){
-                this.renderDarkDeath(k, l);
+                this.renderPopularDeath(k, l);
             }
         }
     }
 
-    private void renderDarkDeath(int par1, int par2){
+    private void renderPopularDeath(int par1, int par2){
         float i = pat.getDistanceToEntity(mc.thePlayer);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glDepthMask(false);
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-        if(pat.deathTicks <= 200 )
+        if(pat.deathTicks <= 200)
         {
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 10F / i);
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F / i);
         }
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         this.mc.getTextureManager().bindTexture(deathOverlay);
