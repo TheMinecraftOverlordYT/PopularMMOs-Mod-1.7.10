@@ -20,7 +20,8 @@ public class PopularChestGenHooks extends ChestGenHooks{
     private static final HashMap<String, ChestGenHooks> chestInfo = new HashMap<String, ChestGenHooks>();
     private static boolean hasInit = false;
 
-    static {
+    static
+    {
         init();
     }
 
@@ -110,7 +111,8 @@ public class PopularChestGenHooks extends ChestGenHooks{
     private int countMax = 0;
     private ArrayList<WeightedRandomChestContent> contents = new ArrayList<WeightedRandomChestContent>();
 
-    public PopularChestGenHooks(String category) {
+    public PopularChestGenHooks(String category)
+    {
         super(category);
     }
 
@@ -211,8 +213,23 @@ public class PopularChestGenHooks extends ChestGenHooks{
     }
 
     //Accessors
-    public int getMin(){ return countMin; }
-    public int getMax(){ return countMax; }
-    public void setMin(int value){ countMin = value; }
-    public void setMax(int value){ countMax = value; }
+    public int getMin()
+    {
+        return countMin;
+    }
+
+    public int getMax()
+    {
+        return countMax;
+    }
+
+    public void setMin(int value)
+    {
+        countMin = value;
+    }
+
+    public void setMax(int value)
+    {
+        countMax = value;
+    }
 }

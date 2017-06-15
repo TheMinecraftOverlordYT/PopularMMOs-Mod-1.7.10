@@ -33,10 +33,11 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
     private int animID;
     private Minecraft mc;
 
-    public EntityPat(World world) {
+    public EntityPat(World world)
+    {
         super(world);
         this.setHealth(this.getMaxHealth());
-        this.setSize(3F, 8F);
+        this.setSize(2.8F, 6.5F);
         this.isImmuneToFire = true;
 
         tasks.addTask(1, new AIUppercut(this));
@@ -49,7 +50,6 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
         targetTasks.addTask(6, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(7, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 64, true));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 32F));
-
     }
 
     protected void applyEntityAttributes() {

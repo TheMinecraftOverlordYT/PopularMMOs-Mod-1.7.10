@@ -21,8 +21,8 @@ import static com.popularmmos.generation.PopularChestGenHooks.POPULAR;
 public class Gym extends WorldGenerator
 {
     /** List of Chest contents to be generated in the Structure chests. */
-    public static final WeightedRandomChestContent[] popularChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(PopularItems.furiousEssence, 1, 10, 1, 5),
-            new WeightedRandomChestContent(Items.apple, 2, 15, 10, 20), new WeightedRandomChestContent(Items.gold_ingot, 1, 4, 14, 30),
+    public static final WeightedRandomChestContent[] popularChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(PopularItems.furiousEssence, 1, 4, 14, 5),
+            new WeightedRandomChestContent(Items.apple, 2, 5, 10, 20), new WeightedRandomChestContent(Items.gold_ingot, 1, 4, 14, 30),
 			new WeightedRandomChestContent(Items.iron_ingot, 4, 4, 14, 30)};
 
 
@@ -438,6 +438,7 @@ public class Gym extends WorldGenerator
 		world.setBlock(x + 15, y + 0, z + 15, Blocks.planks, 0, 3);
         EntityPat entityPat = new EntityPat(world);
         entityPat.setLocationAndAngles(x + 15, y + 1, z + 15, 0, 0);
+        world.spawnEntityInWorld(entityPat);
 		world.setBlock(x + 16, y + 0, z + 15, Blocks.planks, 0, 3);
 		world.setBlock(x + 17, y + 0, z + 15, Blocks.planks, 0, 3);
 		world.setBlock(x + 18, y + 0, z + 15, Blocks.planks, 0, 3);
@@ -3033,19 +3034,19 @@ public class Gym extends WorldGenerator
 		world.setBlock(x + 4, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 5, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 6, y + 5, z + 8, Blocks.air, 0, 3);
-		TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(x + 7, y + 2, z + 8);
+		world.setBlock(x + 7, y + 5, z + 8, Blocks.chest, 2, 3);
+		TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(x + 7, y + 5, z + 8);
 		if (tileentitychest != null)
 			WeightedRandomChestContent.generateChestContents(rand, PopularChestGenHooks.getItems(POPULAR, rand), tileentitychest, PopularChestGenHooks.getCount(POPULAR, rand));
-		world.setBlock(x + 7, y + 5, z + 8, Blocks.chest, 2, 3);
 		world.setBlock(x + 8, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 9, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 10, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 11, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 12, y + 5, z + 8, Blocks.air, 0, 3);
+		world.setBlock(x + 13, y + 5, z + 8, Blocks.chest, 2, 3);
 		TileEntityChest tileentitychest1 = (TileEntityChest)world.getTileEntity(x + 13, y + 5, z + 8);
 		if (tileentitychest1 != null)
 			WeightedRandomChestContent.generateChestContents(rand, PopularChestGenHooks.getItems(POPULAR, rand), tileentitychest1, PopularChestGenHooks.getCount(POPULAR, rand));
-		world.setBlock(x + 13, y + 5, z + 8, Blocks.chest, 2, 3);
 		world.setBlock(x + 14, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 15, y + 5, z + 8, Blocks.air, 0, 3);
 		world.setBlock(x + 16, y + 5, z + 8, Blocks.air, 0, 3);
@@ -3223,19 +3224,19 @@ public class Gym extends WorldGenerator
 		world.setBlock(x + 4, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 5, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 6, y + 5, z + 16, Blocks.air, 0, 3);
+		world.setBlock(x + 7, y + 5, z + 16, Blocks.chest, 2, 3);
 		TileEntityChest tileentitychest2 = (TileEntityChest)world.getTileEntity(x + 7, y + 5, z + 16);
 		if (tileentitychest2 != null)
 			WeightedRandomChestContent.generateChestContents(rand, PopularChestGenHooks.getItems(POPULAR, rand), tileentitychest2, PopularChestGenHooks.getCount(POPULAR, rand));
-		world.setBlock(x + 7, y + 5, z + 16, Blocks.chest, 2, 3);
 		world.setBlock(x + 8, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 9, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 10, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 11, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 12, y + 5, z + 16, Blocks.air, 0, 3);
+		world.setBlock(x + 13, y + 5, z + 16, Blocks.chest, 2, 3);
 		TileEntityChest tileentitychest3 = (TileEntityChest)world.getTileEntity(x + 13, y + 5, z + 16);
 		if (tileentitychest3 != null)
 			WeightedRandomChestContent.generateChestContents(rand, PopularChestGenHooks.getItems(POPULAR, rand), tileentitychest3, PopularChestGenHooks.getCount(POPULAR, rand));
-		world.setBlock(x + 13, y + 5, z + 16, Blocks.chest, 2, 3);
 		world.setBlock(x + 14, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 15, y + 5, z + 16, Blocks.air, 0, 3);
 		world.setBlock(x + 16, y + 5, z + 16, Blocks.air, 0, 3);
@@ -6188,6 +6189,4 @@ public class Gym extends WorldGenerator
 		world.setBlock(x + 21, y + 10, z + 24, Blocks.air, 0, 3);
 		return true;
 	}
-
-
 }

@@ -27,6 +27,7 @@ public class RenderPat extends RenderLiving {
     {
         super.rotateCorpse(p_77043_1_, p_77043_2_, p_77043_3_, p_77043_4_);
         GL11.glRotatef(90, 0.0F, 1.0F, 0.0F);
+        GL11.glScalef(.8F, .8F, .8F);
     }
 
     protected void rotateCorpse(EntityLivingBase p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
