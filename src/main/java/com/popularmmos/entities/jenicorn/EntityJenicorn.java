@@ -180,7 +180,7 @@ public class EntityJenicorn extends EntityAnimal implements IBossDisplayData
                 this.motionY -= .5F;
             }
 
-            if(ticksExisted % 19 == 0 && (motionY < .1 || motionY > -.1))
+            if(ticksExisted % 19 == 0 && (motionY < .1 || motionY > -.1) && motionY < .1 && motionY > -.1)
             {
                 this.playSound("popular:WingFlap", 1F, 1F);
             }

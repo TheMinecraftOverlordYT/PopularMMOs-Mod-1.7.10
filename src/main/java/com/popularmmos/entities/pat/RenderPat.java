@@ -9,7 +9,8 @@ import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class RenderPat extends RenderLiving {
+public class RenderPat extends RenderLiving
+{
 
     private static final ResourceLocation largeWeight = new ResourceLocation("popular:textures/entities/PatLargeWeight.png");
     private static final ResourceLocation mobTextures = new ResourceLocation("popular:textures/entities/PatWeightless.png");

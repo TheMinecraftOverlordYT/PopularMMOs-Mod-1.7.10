@@ -1,16 +1,12 @@
 package com.popularmmos.items.smallWeight;
 
-import com.popularmmos.generation.Gym;
+import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.EntityLightningPink;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import org.lwjgl.input.Keyboard;
-
-import java.util.Random;
 
 public class ItemSmallWeight extends ItemSword {
 
@@ -25,18 +21,24 @@ public class ItemSmallWeight extends ItemSword {
         return true;
     }
 
-    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int X, int Y, int Z, int par7, float par8, float par9, float par10)
+    /**
+     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+     */
+    public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
     {
-        if (!par3World.isRemote)
+        if (!p_77659_3_.capabilities.isCreativeMode)
         {
-            int direction = MathHelper.floor_double(par2EntityPlayer.rotationYaw * 4.0F / 360.0F + 0.5D) & 0x3;
-
-            if (Keyboard.isKeyDown(Keyboard.KEY_G))
-            {
-                new Gym().generate(par3World, new Random(),X, Y, Z);
-            }
-            return true;
+            --p_77659_1_.stackSize;
         }
-        return true;
+
+        p_77659_2_.playSoundAtEntity(p_77659_3_, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+        if (!p_77659_2_.isRemote)
+        {
+            p_77659_2_.addWeatherEffect(new EntityLightningPink(p_77659_2_, p_77659_3_.posX, p_77659_3_.posY, p_77659_3_.posZ, 0F, .4F, .7F));
+        }
+
+        return p_77659_1_;
     }
+
 }

@@ -1,8 +1,31 @@
 
 item.smallWeight.name=Small Weight
+item.largeWeight.name=Large Weight
+item.pinkSword.name=Pink Sword
+item.pinkEssence.name=Beautiful Essence
+item.furiousEssence.name=Furious Essence
+item.furiousHelm.name=Furious Helm
+item.furiousChest.name=Furious Chestplate
+item.furiousLegs.name=Furious Leggings
+item.furiousBoots.name=Furious Boots
 
-entity.Pat.name=PopularMMOs
+itemGroup.popularTabs=The PopularMMOs Mod
+
+entity.PopularMMOs.name=PopularMMOs
+entity.Jenicorn.name=Pixelsus
 
 death.attack.upperCut=%1$s felt the power of Furious Destroyer
+death.attack.smallWeight=%1$s took a weight to the face
+death.attack.largeWeight=%1$s didn't know what hit them
+death.attack.punch=%1$s is seeing stars
 
 tile.pinkOre.name=Beautiful Ore
+tile.patFace.name=Popular Block
+
+achievement.achievementPink=Beautiful Ores
+achievement.achievementPixelsus=GORGEOUS!
+achievement.achievementPopular=Furiously Destroyed
+
+achievement.achievementPink.desc=Smelt some Beautiful Ore
+achievement.achievementPixelsus.desc=Ride a Pixelsus for the first time!
+achievement.achievementPopular.desc=Kill a PopularMMOs boss

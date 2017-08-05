@@ -17,6 +17,5 @@ public class PopularStructureGen implements IWorldGenerator
 		int Zcoord = chunkZ * 20 + random.nextInt(15);
 
 		new Gym().generate(world, random, Xcoord, Ycoord, Zcoord);
-		System.out.println("X: " + Xcoord + "Y: " + Ycoord + "Z: " + Zcoord);
 	}
 }

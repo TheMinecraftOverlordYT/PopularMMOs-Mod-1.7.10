@@ -56,8 +56,8 @@ public class ModelPinkSword extends ModelBase {
     public ModelRenderer BladeJ;
 
     public ModelPinkSword() {
-        this.textureWidth = 64;
-        this.textureHeight = 64;
+        this.textureWidth = 508;
+        this.textureHeight = 508;
         this.CrossGuardB = new ModelRenderer(this, 16, 59);
         this.CrossGuardB.setRotationPoint(-8.0F, 1.0F, 3.5F);
         this.CrossGuardB.addBox(0.0F, 0.0F, -4.0F, 19, 2, 2, 0.0F);

@@ -13,11 +13,13 @@ itemGroup.popularTabs=The PopularMMOs Mod
 
 entity.PopularMMOs.name=PopularMMOs
 entity.Jenicorn.name=Pixelsus
+entity.Jen.name=Evil Jen
 
 death.attack.upperCut=%1$s felt the power of Furious Destroyer
 death.attack.smallWeight=%1$s took a weight to the face
 death.attack.largeWeight=%1$s didn't know what hit them
 death.attack.punch=%1$s is seeing stars
+death.attack.beam=%1$s was vaporized by Evil Jen
 
 tile.pinkOre.name=Beautiful Ore
 tile.patFace.name=Popular Block

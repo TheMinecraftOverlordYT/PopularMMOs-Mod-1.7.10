@@ -25,7 +25,8 @@ import thehippomaster.AnimationAPI.IAnimatedEntity;
 
 import java.util.Iterator;
 
-public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedEntity, IMob {
+public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedEntity, IMob
+{
 
     public static EntityLiving getAttackTarget;
     public int animTick;
@@ -147,19 +148,16 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
                 case 0:
                     this.setAnimID(1);
                     AnimationAPI.sendAnimPacket(this, 1);
-                    System.out.println("Uppercut");
                     break;
 
                 case 1:
                     this.setAnimID(2);
                     AnimationAPI.sendAnimPacket(this, 2);
-                    System.out.println("Small Weight");
                     break;
 
                 case 2:
                     this.setAnimID(3);
                     AnimationAPI.sendAnimPacket(this,3);
-                    System.out.println("Large Weight");
                     break;
 
                 default:

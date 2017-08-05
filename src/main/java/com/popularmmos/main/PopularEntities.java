@@ -1,5 +1,8 @@
 package com.popularmmos.main;
 
+import com.popularmmos.entities.jenboss.EntityJenBoss;
+import com.popularmmos.entities.jenboss.subsidiaries.beam.EntityBeam;
+import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.EntityLightningPink;
 import com.popularmmos.entities.jenicorn.EntityJenicorn;
 import com.popularmmos.entities.pat.EntityPat;
 import com.popularmmos.entities.pat.largeweight.EntityLargeWeight;
@@ -21,9 +24,13 @@ public class PopularEntities
     {
         createEntity(EntityPat.class, "PopularMMOs", 0x0, 0x0);
         createEntity(EntityJenicorn.class, "Jenicorn", 0xFF33CC, 0xFF66CC);
+        createEntity(EntityJenBoss.class, "Jen", 0xFF66CC, 0xFF33CC);
 
         createNonLivingEntity(EntitySmallWeight.class, "ItemSmallWeight");
         createNonLivingEntity(EntityLargeWeight.class, "largeWeight");
+        createNonLivingEntity(EntityBeam.class, "beam");
+
+        createNonLivingEntity(EntityLightningPink.class, "lightning");
     }
 
     public static void createEntity(Class entityClass, String entityName, int solidColor, int spotColor)
@@ -32,7 +39,7 @@ public class PopularEntities
         EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
         EntityRegistry.registerModEntity(entityClass, entityName, randomID, PopularMMOs.MODID, 30, 1, true);
         //probability, minimum group size, max group size, type of creature, biome(s) to spawn in
-        if (entityName == "Jenicorn")
+        if (entityName.equals("Jenicorn"))
         {
             EntityRegistry.addSpawn(entityClass, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest);
         }
@@ -45,7 +52,6 @@ public class PopularEntities
         int randomID = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
         EntityRegistry.registerModEntity(entityClass, entityName, randomID, PopularMMOs.MODID, 66, 1, true);
-        System.out.println(entityClass + " successfully registered.");
     }
 
     private static void createEgg(int randomID, int solidColor, int spotColor)

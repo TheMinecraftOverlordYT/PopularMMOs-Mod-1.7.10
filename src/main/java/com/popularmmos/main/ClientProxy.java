@@ -1,6 +1,11 @@
 package com.popularmmos.main;
 
 
+import com.popularmmos.entities.jenboss.EntityJenBoss;
+import com.popularmmos.entities.jenboss.ModelJenBoss;
+import com.popularmmos.entities.jenboss.RenderJenBoss;
+import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.EntityLightningPink;
+import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.RenderLightningPink;
 import com.popularmmos.entities.jenicorn.EntityJenicorn;
 import com.popularmmos.entities.jenicorn.ModelJenicorn;
 import com.popularmmos.entities.jenicorn.RenderJenicorn;
@@ -31,9 +36,12 @@ public class ClientProxy extends CommonProxy{
 
         RenderingRegistry.registerEntityRenderingHandler(EntityPat.class, new RenderPat(new ModelPat(), 0));
         RenderingRegistry.registerEntityRenderingHandler(EntityJenicorn.class, new RenderJenicorn(new ModelJenicorn(), 0));
+        RenderingRegistry.registerEntityRenderingHandler(EntityJenBoss.class, new RenderJenBoss(new ModelJenBoss(), 0));
 
         RenderingRegistry.registerEntityRenderingHandler(EntitySmallWeight.class, new RenderSmallWeight());
         RenderingRegistry.registerEntityRenderingHandler(EntityLargeWeight.class, new RenderLargeWeight());
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityLightningPink.class, new RenderLightningPink());
 
     }
 

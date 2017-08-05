@@ -21,7 +21,6 @@ public class CommonProxy {
         PopularWorldGen.Popular();
 
         registerRenderThings();
-
     }
 
     @Mod.EventHandler
@@ -36,5 +35,6 @@ public class CommonProxy {
     }
     public void registerRenderThings()
     {
+
     }
 }
