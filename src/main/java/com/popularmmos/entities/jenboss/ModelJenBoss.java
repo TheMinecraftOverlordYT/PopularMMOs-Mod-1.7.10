@@ -255,17 +255,32 @@ public class ModelJenBoss extends ModelBase {
         setAngles();
 
         //Sword Slice
-        animator.setAnim(1);
-        animator.startPhase(90);
-            animator.rotate(RArmA, 0F, 1F, 0F);
-        animator.endPhase();
-        animator.setStationaryPhase(2);
-        animator.resetPhase(1);
+//        animator.setAnim(1);
+//        animator.startPhase(90);
+//            animator.rotate(RArmA, 0F, 1F, 0F);
+//        animator.endPhase();
+//        animator.setStationaryPhase(2);
+//        animator.resetPhase(1);
     }
 
     private void setAngles()
     {
+        this.Scabbard.rotationPointY = .5F;
+        this.Scabbard.rotationPointX = 25F;
+        this.Scabbard.rotateAngleZ = .7F;
 
+        this.IndexFingB.rotateAngleX = .2F;
+        this.IndexFingC.rotateAngleX = .2F;
+        this.MidFingB.rotateAngleX = .2F;
+        this.MidFingC.rotateAngleX = .2F;
+        this.RingFingB.rotateAngleX = .2F;
+        this.RingFingC.rotateAngleX = .2F;
+        this.ThumbB.rotateAngleX = .2F;
+        this.PinkieB.rotateAngleX = .2F;
+        this.PinkieC.rotateAngleX = .2F;
+
+        this.RArmA.rotateAngleZ = -.1F;
+        this.LArmA.rotateAngleZ = .1F;
     }
 
 }
