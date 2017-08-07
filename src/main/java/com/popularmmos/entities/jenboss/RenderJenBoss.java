@@ -65,7 +65,7 @@ public class RenderJenBoss extends RenderLiving
                 GL11.glRotatef(6F, 1F, 0F, 1F);
                 GL11.glRotatef(-2F, 1F, 0F, 0F);
                 GL11.glTranslatef(-2.6F, 0.7F, 0F);
-            this.modelBeam.render(p_77029_1_, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, .0625F);
+        //    this.pinkSword.render(p_77029_1_, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, .0625F);
         GL11.glPopMatrix();
         super.renderEquippedItems(p_77029_1_, p_77029_2_);
         Tessellator tessellator = Tessellator.instance;
