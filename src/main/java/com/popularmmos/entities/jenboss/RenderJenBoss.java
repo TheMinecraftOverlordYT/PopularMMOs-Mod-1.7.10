@@ -55,18 +55,17 @@ public class RenderJenBoss extends RenderLiving
 
     protected void renderEquippedItems(EntityJenBoss p_77029_1_, float p_77029_2_)
     {
-        super.renderEquippedItems(p_77029_1_, p_77029_2_);
-        modelBeam = new ModelBeam();
-        pinkSword = new ModelPinkSword();
-            GL11.glPushMatrix();
-            this.jenBoss.GauntletBody.postRender(0.0625F);
-            this.jenBoss.GauntletBody.addChild(pinkSword.BladeA);
-                GL11.glRotatef(90.0F, .0F, .0F, 1.0F);
-                GL11.glRotatef(6F, 1F, 0F, 1F);
-                GL11.glRotatef(-2F, 1F, 0F, 0F);
-                GL11.glTranslatef(-2.6F, 0.7F, 0F);
-        //    this.pinkSword.render(p_77029_1_, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, .0625F);
-        GL11.glPopMatrix();
+//        modelBeam = new ModelBeam();
+//        pinkSword = new ModelPinkSword();
+//            GL11.glPushMatrix();
+//            this.jenBoss.GauntletBody.postRender(0.0625F);
+//            this.jenBoss.GauntletBody.addChild(pinkSword.BladeA);
+////                GL11.glRotatef(90.0F, .0F, .0F, 1.0F);
+////                GL11.glRotatef(6F, 1F, 0F, 1F);
+////                GL11.glRotatef(-2F, 1F, 0F, 0F);
+////                GL11.glTranslatef(-2.6F, 0.7F, 0F);
+//        //    this.pinkSword.render(p_77029_1_, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, .0625F);
+//        GL11.glPopMatrix();
         super.renderEquippedItems(p_77029_1_, p_77029_2_);
         Tessellator tessellator = Tessellator.instance;
 

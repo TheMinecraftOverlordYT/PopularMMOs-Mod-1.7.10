@@ -55,7 +55,8 @@ public class ModelPinkSword extends ModelBase
     public ModelRenderer BladeI;
     public ModelRenderer BladeJ;
 
-    public ModelPinkSword() {
+    public ModelPinkSword()
+    {
         this.textureWidth = 508;
         this.textureHeight = 508;
         this.BladeDesign3 = new ModelRenderer(this, 0, 0);
