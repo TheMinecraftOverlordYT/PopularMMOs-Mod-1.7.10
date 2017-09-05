@@ -3,6 +3,7 @@ package com.popularmmos.entities.jenboss;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
 
@@ -97,7 +98,8 @@ public class ModelJenBoss extends ModelBase {
     public ModelRenderer LBoot;
     public ModelRenderer LBottomLeg;
 
-    public ModelJenBoss() {
+    public ModelJenBoss()
+    {
         this.textureWidth = 508;
         this.textureHeight = 508;
         this.IndexFingA = new ModelRenderer(this, 213, 192);
@@ -134,7 +136,7 @@ public class ModelJenBoss extends ModelBase {
         this.Scabbard.setRotationPoint(-6.0F, 32.5F, 11.0F);
         this.Scabbard.addBox(0.0F, -4.0F, 0.0F, 13, 50, 2, 0.0F);
         this.setRotateAngle(Scabbard, 0.0F, 0.0F, -2.0018926520374962F);
-         this.RBoot = new ModelRenderer(this, 45, 183);
+        this.RBoot = new ModelRenderer(this, 45, 183);
         this.RBoot.setRotationPoint(-3.0F, 21.0F, 13.0F);
         this.RBoot.addBox(0.0F, -13.0F, -13.0F, 19, 16, 16, 0.0F);
         this.RingFingA = new ModelRenderer(this, 213, 175);
@@ -180,11 +182,11 @@ public class ModelJenBoss extends ModelBase {
         this.RBottomLeg = new ModelRenderer(this, 104, 173);
         this.RBottomLeg.setRotationPoint(-3.0F, 3.0F, 14.0F);
         this.RBottomLeg.addBox(0.0F, -3.0F, -13.0F, 18, 8, 14, 0.0F);
-         this.MainGem = new ModelRenderer(this, 206, 208);
+        this.MainGem = new ModelRenderer(this, 206, 208);
         this.MainGem.setRotationPoint(11.0F, 2.0F, 2.0F);
         this.MainGem.addBox(0.0F, 0.0F, 0.0F, 7, 7, 7, 0.0F);
         this.setRotateAngle(MainGem, -0.7853981633974483F, 0.7853981633974483F, 0.7853981633974483F);
-          this.PinkieA = new ModelRenderer(this, 215, 168);
+        this.PinkieA = new ModelRenderer(this, 215, 168);
         this.PinkieA.setRotationPoint(1.0F, 14.0F, -3.0F);
         this.PinkieA.addBox(1.0F, 0.0F, 0.0F, 2, 3, 2, 0.0F);
         this.setRotateAngle(PinkieA, 0.0017453292519943296F, 0.0F, -0.008377580409572781F);
@@ -469,24 +471,27 @@ public class ModelJenBoss extends ModelBase {
         this.HiltJewelA.addChild(this.HiltJewelF);
         this.BladeB.addChild(this.BladeI);
         this.GauntletBody.addChild(this.BladeA);
+        this.Chest.addChild(LLegA);
+        this.Chest.addChild(RLegA);
         animator = new Animator(this);
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+    {
         animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
         this.LArmA.render(f5);
         this.Chest.render(f5);
         this.Head.render(f5);
         this.RArmA.render(f5);
-        this.RLegA.render(f5);
-        this.LLegA.render(f5);
+
     }
 
     /**
      * This is a helper function from Tabula to set the rotation of model parts
      */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z)
+    {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
@@ -497,38 +502,85 @@ public class ModelJenBoss extends ModelBase {
         animator.update(entity);
         setAngles();
 
-        //Sword Slice
-//        animator.setAnim(1);
-//        animator.startPhase(90);
-//            animator.rotate(RArmA, 0F, 1F, 0F);
-//        animator.endPhase();
-//        animator.setStationaryPhase(2);
-//        animator.resetPhase(1);
+        this.Head.rotateAngleY = f5 / (180F / (float)Math.PI);
+        this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+
+        this.LLegA.rotateAngleX = MathHelper.cos(f * 0.66662F) * .4F * f1;
+        this.LLegB.rotateAngleX = MathHelper.cos(f * 0.66662F + (float) Math.PI) * .4F * f1;
+
+        this.RLegA.rotateAngleX = MathHelper.cos(f * 0.5F + (float) Math.PI) * .5F * f1;
+        this.RLegB.rotateAngleX = MathHelper.cos(f * 0.0F) * .5F * f1;
+
+       // Sword Slice: One forehand slice, one backhand slice, one double-fisted downwards slam, return sword to scabbard.
+        animator.setAnim(1);
+        animator.startPhase(15);
+            animator.rotate(LArmA, -1.2F, 0F, 0F);
+        animator.endPhase();
+        animator.startPhase(10);
+            animator.rotate(LLegA, -1F, 0F, 0F);
+            animator.rotate(LLegB, .5F, 0F, 0F);
+            animator.rotate(Chest, .4F, 0F, 0F);
+            animator.rotate(LArmA, 0F, 0F, -.3F);
+            animator.rotate(LArmB, 0F, 0F, -.7F);
+            animator.rotate(BladeA, 0F, 0F, 1F);
+        animator.endPhase();
+        animator.startPhase(10);
+            animator.rotate(RLegA, -1F, 0F, 0F);
+            animator.rotate(RLegB, .5F, 0F, 0F);
+            animator.rotate(Chest, .4F, 0F, 0F);
+            animator.rotate(LArmA, 0F, 0F, .15F);
+            animator.rotate(LArmB, 0F, 0F, .35F);
+            animator.rotate(BladeA, 0F, 0F, -.5F);
+        animator.endPhase();
+        animator.startPhase(15);
+            animator.rotate(LArmA, -2.4F, 0F, .7F);
+            animator.rotate(RArmA, -2.4F, 0F, -.7F);
+            animator.rotate(BladeA, .5F, 0F, 0F);
+        animator.endPhase();
+        animator.startPhase(20);
+            animator.rotate(LArmA, 0F, 0F, -.7F);
+            animator.rotate(RArmA, 0F, 0F, .7F);
+            animator.rotate(BladeA, .6F, 0F, 2F);
+            animator.rotate(Chest, .5F, 0, 0);
+            animator.rotate(LLegA, -.5F, 0F, 0F);
+            animator.rotate(RLegA, -.5F, 0F, 0F);
+        animator.endPhase();
+        animator.resetPhase(1);
     }
 
     private void setAngles()
     {
-        this.Scabbard.rotationPointY = .5F;
-        this.Scabbard.rotationPointX = 25F;
-        this.Scabbard.rotateAngleZ = .7F;
 
-        this.IndexFingB.rotateAngleX = .2F;
-        this.IndexFingC.rotateAngleX = .2F;
-        this.MidFingB.rotateAngleX = .2F;
-        this.MidFingC.rotateAngleX = .2F;
-        this.RingFingB.rotateAngleX = .2F;
-        this.RingFingC.rotateAngleX = .2F;
-        this.ThumbB.rotateAngleX = .2F;
-        this.PinkieB.rotateAngleX = .2F;
-        this.PinkieC.rotateAngleX = .2F;
+        this.LLegA.rotationPointY = 48;
+        this.LLegA.rotationPointX = -1F;
+        this.RLegA.rotationPointY = 48;
+        this.RLegA.rotationPointX = 13F;
+
+        this.LArmB.rotateAngleY = 1.5F;
+        this.LArmB.rotationPointZ = 8F;
+
+        this.Scabbard.rotationPointY = .5F;
+        this.Scabbard.rotationPointX = -10F;
+        this.Scabbard.rotateAngleZ = -.7F;
+
+        this.IndexFingB.rotateAngleX = .6F;
+        this.IndexFingC.rotateAngleX = .6F;
+        this.MidFingB.rotateAngleX = .6F;
+        this.MidFingC.rotateAngleX = .6F;
+        this.RingFingB.rotateAngleX = .6F;
+        this.RingFingC.rotateAngleX = .6F;
+        this.ThumbB.rotateAngleX = -.7F;
+        this.PinkieB.rotateAngleX = .6F;
+        this.PinkieC.rotateAngleX = .6F;
 
         this.RArmA.rotateAngleZ = -.1F;
         this.LArmA.rotateAngleZ = .1F;
 
-        this.BladeA.rotationPointZ = 11F;
-        this.BladeA.rotateAngleZ = 3.7F;
-        this.BladeA.rotationPointX = 53F;
-        this.BladeA.rotationPointY = -25F;
+        this.BladeA.rotateAngleX = 0F;
+        this.BladeA.rotateAngleZ = 1.5F;
+        this.BladeA.rotationPointX = 20F;
+        this.BladeA.rotationPointY = 17F;
+        this.BladeA.rotationPointZ = 3F;
 
         this.BladeDesign1.rotationPointX = 2F;
         this.BladeDesign1.rotateAngleZ = 1F;

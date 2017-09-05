@@ -29,12 +29,12 @@ public class AISwordStrike extends AIAnimation
 
     public int getDuration()
     {
-        return 90;
+        return 70;
     }
 
     public boolean continueExecuting()
     {
-        return entity.animTick > 30 ? false : super.continueExecuting();
+        return entity.animTick > 200 ? false : super.continueExecuting();
     }
 
     public void startExecuting()
@@ -45,14 +45,17 @@ public class AISwordStrike extends AIAnimation
 
     public void updateTask()
     {
-        if(entity.getAnimTick() < 90 && attackTarget != null)
-            entity.getLookHelper().setLookPositionWithEntity(attackTarget, 20F,20F);
-        if((entity.getAnimTick() == 20 || entity.getAnimTick() == 25 || entity.getAnimTick() == 30) && attackTarget != null)
+        if(entity.getAnimTick() < 70 && attackTarget != null)
+            entity.getLookHelper().setLookPositionWithEntity(attackTarget, 10F,10F);
+        if((entity.getAnimTick() == 20 || entity.getAnimTick() == 35) && attackTarget != null)
         {
-            attackTarget.attackEntityFrom(PopularDamageSources.swordSlice, 5);
+            attackTarget.attackEntityFrom(PopularDamageSources.swordSlice, 10);
         }
-
-        if(entity.getAnimTick() > 30)
+        else if(entity.getAnimTick() == 65)
+        {
+            attackTarget.attackEntityFrom(PopularDamageSources.downwardsSwordSlice, 15);
+        }
+        if(entity.getAnimTick() > 70)
             entity.setAnimID(0);
     }
 

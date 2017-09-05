@@ -18,6 +18,7 @@ public class PopularDamageSources extends DamageSource{
 
     public static DamageSource upperCut = new PopularDamageSources("upperCut");
     public static DamageSource swordSlice = new PopularDamageSources("swordSlice");
+    public static DamageSource downwardsSwordSlice = new PopularDamageSources("downwardsSwordSlice");
 
     public static DamageSource smallWeight (EntitySmallWeight entitySmallWeight, EntityLivingBase thrower)
     {

@@ -6,8 +6,6 @@ import com.popularmmos.entities.pat.ai.AISmallThrow;
 import com.popularmmos.entities.pat.ai.AIUppercut;
 import com.popularmmos.main.PopularItems;
 import com.popularmmos.main.PopularMMOs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.util.internal.ThreadLocalRandom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -99,14 +97,6 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
         }
     }
 
-    protected void despawnEntity() {
-        this.entityAge = 0;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int getBrightnessForRender(float f) {
-        return 12128880;
-    }
 
     @Override
     public void setAnimID(int id) {
@@ -190,8 +180,6 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
         {
             this.playSound("popular:PatSpawn", 10F, 10F);
         }
-
-
     }
 
     public void onDeathUpdate()

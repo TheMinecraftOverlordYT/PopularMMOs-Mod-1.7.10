@@ -53,7 +53,7 @@ public class AIUppercut extends AIAnimation {
             attackTarget.motionY += 0.8000000059604645D;
         }
 
-            if(entity.getAnimTick() > 30)
+        if(entity.getAnimTick() > 30)
             entity.setAnimID(0);
     }
 
