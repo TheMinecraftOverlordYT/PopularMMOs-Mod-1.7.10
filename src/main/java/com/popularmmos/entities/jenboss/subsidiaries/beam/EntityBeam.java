@@ -1,8 +1,11 @@
 package com.popularmmos.entities.jenboss.subsidiaries.beam;
 
 import com.popularmmos.PopularDamageSources;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -27,6 +30,27 @@ public class EntityBeam extends EntityThrowable
     protected float getGravityVelocity()
     {
         return 0.0F;
+    }
+
+    /**
+     * Sets the velocity to the args. Args: x, y, z
+     */
+    @SideOnly(Side.CLIENT)
+    public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_)
+    {
+        this.motionX = p_70016_1_*50;
+        this.motionY = p_70016_3_*50;
+        this.motionZ = p_70016_5_*50;
+
+        if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
+        {
+            float f = MathHelper.sqrt_double(p_70016_1_ * p_70016_1_ + p_70016_5_ * p_70016_5_);
+            this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(p_70016_1_, p_70016_5_) * 180.0D / Math.PI);
+            this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(p_70016_3_, (double)f) * 180.0D / Math.PI);
+            this.prevRotationPitch = this.rotationPitch;
+            this.prevRotationYaw = this.rotationYaw;
+            this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+        }
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.popularmmos.entities.jenboss;
 
+import com.popularmmos.entities.jenboss.ai.AIBeam;
 import com.popularmmos.entities.jenboss.ai.AIJenLargeThrow;
-import com.popularmmos.entities.jenboss.ai.AIJenSmallThrow;
 import com.popularmmos.entities.jenboss.ai.AISwordStrike;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -16,6 +16,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 
@@ -27,6 +28,7 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
     private int animID;
     private Minecraft mc;
     public int ticksAlive;
+    private final int index = 20;
 
     public EntityJenBoss(World world)
     {
@@ -36,7 +38,7 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
         this.isImmuneToFire = true;
 
         tasks.addTask(1, new AISwordStrike(this));
-        tasks.addTask(1, new AIJenSmallThrow(this));
+        tasks.addTask(1, new AIBeam(this));
         tasks.addTask(1, new AIJenLargeThrow(this));
         tasks.addTask(2, new EntityAISwimming(this));
         tasks.addTask(3, new EntityAIWander(this, .8D));
@@ -50,12 +52,25 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
     protected void entityInit()
     {
         super.entityInit();
-        dataWatcher.addObject(17, new Integer(0));
+        this.dataWatcher.addObject(index, -1);
     }
 
-    public int getWatchedTargetId(int p_82203_1_)
+    public void setObject(int newValue)
     {
-        return this.dataWatcher.getWatchableObjectInt(17 + p_82203_1_);
+        this.dataWatcher.updateObject(index, newValue);
+    }
+
+    public int getObject()
+    {
+        return this.dataWatcher.getWatchableObjectInt(index);
+    }
+
+    public void setAttackTarget(EntityLivingBase p_70624_1_)
+    {
+        this.attackTarget = p_70624_1_;
+        ForgeHooks.onLivingSetAttackTarget(this, p_70624_1_);
+        if(p_70624_1_ != null)
+        this.setObject(p_70624_1_.getEntityId());
     }
 
     protected void applyEntityAttributes()
@@ -143,17 +158,16 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-
              if(this.getAttackTarget() != null && this.animID == 0)
             switch(this.rand.nextInt(1))
             {
-                case 0:
-                    this.setAnimID(1);
+                case 55:
+                    this.setAnimID(5);
                     AnimationAPI.sendAnimPacket(this, 1);
                     System.out.println("SwordStrike");
                     break;
 
-                case 1:
+                case 0:
                     this.setAnimID(2);
                     AnimationAPI.sendAnimPacket(this, 2);
                     System.out.println("Beam");
@@ -184,8 +198,8 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
             if ((d3 > 1.0D) && (this.animTick == 0))
             {
                 double d5 = MathHelper.sqrt_double(d3);
-                this.motionX += d0 / d5 * 0.0625D - this.motionX;
-                this.motionZ += d1 / d5 * 0.0625D - this.motionZ;
+                this.motionX += d0 / d5 * 0.0725D - this.motionX;
+                this.motionZ += d1 / d5 * 0.0725D - this.motionZ;
             }
         }
 

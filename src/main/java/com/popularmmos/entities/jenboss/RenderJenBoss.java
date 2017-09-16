@@ -37,8 +37,7 @@ public class RenderJenBoss extends RenderLiving
 
     protected ResourceLocation getEntityTexture(EntityJenBoss entity)
     {
-        return// entity.getAnimID() == 2 ? beamTextures :
-                mobTextures;
+        return mobTextures;
     }
 
     protected ResourceLocation getEntityTexture(Entity entity)
@@ -64,7 +63,8 @@ public class RenderJenBoss extends RenderLiving
 
         if(p_77029_1_.getAnimID() == 2)
         {
-            if (p_77029_1_.ticksAlive > 0) {
+            if (p_77029_1_.ticksAlive > 0)
+            {
                 RenderHelper.disableStandardItemLighting();
                 float f1 = ((float) p_77029_1_.ticksAlive + p_77029_2_) / 200.0F;
                 float f2 = 0.0F;
@@ -159,16 +159,13 @@ public class RenderJenBoss extends RenderLiving
 
     public void doRender(Entity p_147500_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {
-        mc = Minecraft.getMinecraft();
-        int i1;
         this.doRender((EntityJenBoss)p_147500_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
         if(p_147500_1_ instanceof  EntityJenBoss)
             entityJen = (EntityJenBoss) p_147500_1_;
-         //   i1 = entityJen.getDataWatcher().
+        Entity renderTarget = entityJen.worldObj.getEntityByID(entityJen.getObject());
 
-        if(entityJen.attackTarget != null)
+        if(renderTarget != null)
         {
-            GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
             Tessellator tessellator = Tessellator.instance;
             this.bindTexture(beamTextures);
             GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, 10497.0F);
@@ -178,22 +175,13 @@ public class RenderJenBoss extends RenderLiving
             GL11.glDisable(GL11.GL_BLEND);
             GL11.glDepthMask(true);
             OpenGlHelper.glBlendFunc(770, 1, 1, 0);
-            float f2 = (float) p_147500_1_.worldObj.getTotalWorldTime() + p_76986_8_;
-            float f3 = -f2 * 0.2F - (float) MathHelper.floor_float(-f2 * 0.1F);
-            float f4 = (float)(entityJen.attackTarget.posX - p_147500_1_.posX - (p_147500_1_.prevPosX - p_147500_1_.posX) * (double)(1.0F - p_76986_9_));
-            float f5 = (float)((double)f3 + entityJen.attackTarget.posY - 1.0D - p_147500_1_.posY - (p_147500_1_.prevPosY - p_147500_1_.posY) * (double)(1.0F - p_76986_9_));
-            float f6 = (float)(entityJen.attackTarget.posZ - p_147500_1_.posZ - (p_147500_1_.prevPosZ - p_147500_1_.posZ) * (double)(1.0F - p_76986_9_));
-            float f7 = MathHelper.sqrt_float(f4 * f4 + f6 * f6);
-            float f8 = MathHelper.sqrt_float(f4 * f4 + f5 * f5 + f6 * f6);
-            GL11.glPushMatrix();
-            GL11.glTranslatef((float)p_76986_2_, (float)p_76986_4_ + 2.0F, (float)p_76986_6_);
-            GL11.glRotatef((float)(-Math.atan2((double)f6, (double)f4)) * 180.0F / (float)Math.PI - 90.0F, 0.0F, 1.0F, 0.0F);
-            GL11.glRotatef((float)(-Math.atan2((double)f7, (double)f5)) * 180.0F / (float)Math.PI - 90.0F, 1.0F, 0.0F, 0.0F);
+            float f2 = (float)p_147500_1_.worldObj.getTotalWorldTime() + p_76986_8_;
+            float f3 = -f2 * 0.2F - (float)MathHelper.floor_float(-f2 * 0.1F);
             byte b0 = 1;
-            double d3 = (double) f2 * 0.025D * (1.0D - (double) (b0 & 1) * 2.5D);
+            double d3 = (double)f2 * 0.025D * (1.0D - (double)(b0 & 1) * 2.5D);
             tessellator.startDrawingQuads();
             tessellator.setColorRGBA(255, 255, 255, 32);
-            double d5 = (double) b0 * 0.2D;
+            double d5 = (double)b0 * 0.2D;
             double d7 = 0.5D + Math.cos(d3 + 2.356194490192345D) * d5;
             double d9 = 0.5D + Math.sin(d3 + 2.356194490192345D) * d5;
             double d11 = 0.5D + Math.cos(d3 + (Math.PI / 4D)) * d5;
@@ -202,27 +190,27 @@ public class RenderJenBoss extends RenderLiving
             double d17 = 0.5D + Math.sin(d3 + 3.9269908169872414D) * d5;
             double d19 = 0.5D + Math.cos(d3 + 5.497787143782138D) * d5;
             double d21 = 0.5D + Math.sin(d3 + 5.497787143782138D) * d5;
-            double d23 = (double) (256.0F);
+            double d23 = (double)(256.0F );
             double d25 = 0.0D;
             double d27 = 1.0D;
-            double d28 = (double) (-1.0F + f3);
-            double d29 = (double) (256.0F) * (0.5D / d5) + d28;
-            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_ + d23, p_76986_6_ + d9, d27, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_, p_76986_6_ + d9, d27, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_, p_76986_6_ + d13, d25, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_ + d23, p_76986_6_ + d13, d25, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_ + d23, p_76986_6_ + d21, d27, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_, p_76986_6_ + d21, d27, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_, p_76986_6_ + d17, d25, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_ + d23, p_76986_6_ + d17, d25, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_ + d23, p_76986_6_ + d13, d27, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_, p_76986_6_ + d13, d27, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_, p_76986_6_ + d21, d25, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_ + d23, p_76986_6_ + d21, d25, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_ + d23, p_76986_6_ + d17, d27, d29);
-            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_, p_76986_6_ + d17, d27, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_, p_76986_6_ + d9, d25, d28);
-            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_ + d23, p_76986_6_ + d9, d25, d29);
+            double d28 = (double)(-1.0F + f3);
+            double d29 = (double)(256.0F ) * (0.5D / d5) + d28;
+            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_ + d23, p_76986_2_ + d9, d27, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_, p_76986_2_ + d9, d27, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_, p_76986_2_ + d13, d25, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_ + d23, p_76986_2_ + d13, d25, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_ + d23, p_76986_2_ + d21, d27, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_, p_76986_2_ + d21, d27, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_, p_76986_2_ + d17, d25, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_ + d23, p_76986_2_ + d17, d25, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_ + d23, p_76986_2_ + d13, d27, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d11, p_76986_4_, p_76986_2_ + d13, d27, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_, p_76986_2_ + d21, d25, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d19, p_76986_4_ + d23, p_76986_2_ + d21, d25, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_ + d23, p_76986_2_ + d17, d27, d29);
+            tessellator.addVertexWithUV(p_76986_2_ + d15, p_76986_4_, p_76986_2_ + d17, d27, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_, p_76986_2_ + d9, d25, d28);
+            tessellator.addVertexWithUV(p_76986_2_ + d7, p_76986_4_ + d23, p_76986_2_ + d9, d25, d29);
             tessellator.draw();
             GL11.glEnable(GL11.GL_BLEND);
             OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -237,29 +225,28 @@ public class RenderJenBoss extends RenderLiving
             double d12 = 0.8D;
             double d14 = 0.8D;
             double d16 = 0.8D;
-            double d18 = (double) (256.0F);
+            double d18 = (double)(256.0F);
             double d20 = 0.0D;
             double d22 = 1.0D;
-            double d24 = (double) (-1.0F + f3);
-            double d26 = (double) (256.0F) + d24;
-            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_ + d18, p_76986_6_ + d4, d22, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_, p_76986_6_ + d4, d22, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_, p_76986_6_ + d8, d20, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_ + d18, p_76986_6_ + d8, d20, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_ + d18, p_76986_6_ + d16, d22, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_, p_76986_6_ + d16, d22, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_, p_76986_6_ + d12, d20, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_ + d18, p_76986_6_ + d12, d20, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_ + d18, p_76986_6_ + d8, d22, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_, p_76986_6_ + d8, d22, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_, p_76986_6_ + d16, d20, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_ + d18, p_76986_6_ + d16, d20, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_ + d18, p_76986_6_ + d12, d22, d26);
-            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_, p_76986_6_ + d12, d22, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_, p_76986_6_ + d4, d20, d24);
-            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_ + d18, p_76986_6_ + d4, d20, d26);
+            double d24 = (double)(-1.0F + f3);
+            double d26 = (double)(256.0F) + d24;
+            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_ + d18, p_76986_2_ + d4, d22, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_, p_76986_2_ + d4, d22, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_, p_76986_2_ + d8, d20, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_ + d18, p_76986_2_ + d8, d20, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_ + d18, p_76986_2_ + d16, d22, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_, p_76986_2_ + d16, d22, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_, p_76986_2_ + d12, d20, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_ + d18, p_76986_2_ + d12, d20, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_ + d18, p_76986_2_ + d8, d22, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d6, p_76986_4_, p_76986_2_ + d8, d22, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_, p_76986_2_ + d16, d20, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d14, p_76986_4_ + d18, p_76986_2_ + d16, d20, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_ + d18, p_76986_2_ + d12, d22, d26);
+            tessellator.addVertexWithUV(p_76986_2_ + d10, p_76986_4_, p_76986_2_ + d12, d22, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_, p_76986_2_ + d4, d20, d24);
+            tessellator.addVertexWithUV(p_76986_2_ + d30, p_76986_4_ + d18, p_76986_2_ + d4, d20, d26);
             tessellator.draw();
-            GL11.glPopMatrix();
             GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glEnable(GL11.GL_TEXTURE_2D);
             GL11.glDepthMask(true);

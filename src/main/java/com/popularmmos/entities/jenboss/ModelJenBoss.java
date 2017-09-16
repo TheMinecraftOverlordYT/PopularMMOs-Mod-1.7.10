@@ -546,6 +546,14 @@ public class ModelJenBoss extends ModelBase {
             animator.rotate(RLegA, -.5F, 0F, 0F);
         animator.endPhase();
         animator.resetPhase(1);
+
+        //Beam (simple arm lift)
+        animator.setAnim(2);
+        animator.startPhase(20);
+            animator.rotate(LArmA, -1F, 0F, 0F);
+            animator.rotate(BladeA, 1F, 0F, 0F);
+        animator.endPhase();
+        animator.resetPhase(1);
     }
 
     private void setAngles()
