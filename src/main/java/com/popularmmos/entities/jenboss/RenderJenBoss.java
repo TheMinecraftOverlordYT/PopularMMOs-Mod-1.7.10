@@ -32,7 +32,7 @@ public class RenderJenBoss extends RenderLiving
     public RenderJenBoss(ModelBase par1ModelBase, float par2) {
         super(par1ModelBase, par2);
         this.jenBoss = (ModelJenBoss)super.mainModel;
-        this.setRenderPassModel(this.jenBoss);
+      //  this.setRenderPassModel(this.jenBoss);
     }
 
     protected ResourceLocation getEntityTexture(EntityJenBoss entity)
