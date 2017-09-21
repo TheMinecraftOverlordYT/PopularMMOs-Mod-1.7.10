@@ -40,7 +40,7 @@ public class AISwordStrike extends AIAnimation
     public void startExecuting()
     {
         super.startExecuting();
-        attackTarget = entity.getAttackTarget();
+        attackTarget = (EntityLivingBase)entity.worldObj.getEntityByID(entity.getObject());
     }
 
     public void updateTask()

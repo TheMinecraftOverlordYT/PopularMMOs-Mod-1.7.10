@@ -41,7 +41,7 @@ public class AIBeam extends AIAnimation {
     public void startExecuting()
     {
         super.startExecuting();
-        attackTarget = entity.getAttackTarget();
+        attackTarget = (EntityLivingBase) entity.worldObj.getEntityByID(entity.getObject());
     }
 
     public void updateTask()

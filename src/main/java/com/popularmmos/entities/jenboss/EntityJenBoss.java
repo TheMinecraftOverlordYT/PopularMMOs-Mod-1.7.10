@@ -158,16 +158,16 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-             if(this.getAttackTarget() != null && this.animID == 0)
-            switch(this.rand.nextInt(1))
+        if(worldObj.getEntityByID(getObject()) != null && this.animID == 0)
+            switch(this.rand.nextInt(3))
             {
-                case 55:
+                case 0:
                     this.setAnimID(5);
                     AnimationAPI.sendAnimPacket(this, 1);
                     System.out.println("SwordStrike");
                     break;
 
-                case 0:
+                case 1:
                     this.setAnimID(2);
                     AnimationAPI.sendAnimPacket(this, 2);
                     System.out.println("Beam");

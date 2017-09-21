@@ -100,8 +100,8 @@ public class ModelJenBoss extends ModelBase {
 
     public ModelJenBoss()
     {
-        this.textureWidth = 508;
-        this.textureHeight = 508;
+        this.textureWidth = 256;
+        this.textureHeight = 256;
         this.IndexFingA = new ModelRenderer(this, 213, 192);
         this.IndexFingA.setRotationPoint(14.0F, 14.0F, -3.0F);
         this.IndexFingA.addBox(0.0F, 0.0F, 0.0F, 3, 4, 3, 0.0F);
