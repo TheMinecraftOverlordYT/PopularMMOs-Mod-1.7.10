@@ -188,7 +188,7 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
             this.getLookHelper().setLookPositionWithEntity(this.getAttackTarget(), 10F, 30F);
         }
 
-        Entity entity = this.getAttackTarget();
+        Entity entity = worldObj.getEntityByID(getObject());
 
         if (entity != null)
         {

@@ -1,10 +1,8 @@
 package com.popularmmos;
 
 
-import com.popularmmos.entities.jenboss.subsidiaries.beam.EntityBeam;
-import com.popularmmos.entities.pat.smallweight.EntitySmallWeight;
 import com.popularmmos.entities.pat.largeweight.EntityLargeWeight;
-
+import com.popularmmos.entities.pat.smallweight.EntitySmallWeight;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
@@ -19,6 +17,7 @@ public class PopularDamageSources extends DamageSource{
     public static DamageSource upperCut = new PopularDamageSources("upperCut");
     public static DamageSource swordSlice = new PopularDamageSources("swordSlice");
     public static DamageSource downwardsSwordSlice = new PopularDamageSources("downwardsSwordSlice");
+    public static DamageSource beam = new PopularDamageSources("beam");
 
     public static DamageSource smallWeight (EntitySmallWeight entitySmallWeight, EntityLivingBase thrower)
     {
@@ -30,8 +29,4 @@ public class PopularDamageSources extends DamageSource{
         return (new EntityDamageSourceIndirect("largeWeight", entityLargeWeight, thrower)).setProjectile();
     }
 
-    public static DamageSource beam(EntityBeam beam, EntityLivingBase thrower)
-    {
-        return(new EntityDamageSourceIndirect("beam", beam, thrower)).setProjectile();
-    }
 }

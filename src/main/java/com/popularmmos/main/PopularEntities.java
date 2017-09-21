@@ -1,7 +1,6 @@
 package com.popularmmos.main;
 
 import com.popularmmos.entities.jenboss.EntityJenBoss;
-import com.popularmmos.entities.jenboss.subsidiaries.beam.EntityBeam;
 import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.EntityLightningPink;
 import com.popularmmos.entities.jenicorn.EntityJenicorn;
 import com.popularmmos.entities.pat.EntityPat;
