@@ -4,8 +4,8 @@ package com.popularmmos.entities.pat;
 import com.popularmmos.entities.pat.ai.AILargeThrow;
 import com.popularmmos.entities.pat.ai.AISmallThrow;
 import com.popularmmos.entities.pat.ai.AIUppercut;
+import com.popularmmos.main.MMOs;
 import com.popularmmos.main.PopularItems;
-import com.popularmmos.main.PopularMMOs;
 import io.netty.util.internal.ThreadLocalRandom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -92,7 +92,7 @@ public class EntityPat extends EntityMob implements IBossDisplayData, IAnimatedE
             while (iterator.hasNext())
             {
                 EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-                entityplayer.triggerAchievement(PopularMMOs.popularmmos);
+                entityplayer.triggerAchievement(MMOs.popularmmos);
             }
         }
     }

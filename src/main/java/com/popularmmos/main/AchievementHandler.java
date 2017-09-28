@@ -19,7 +19,7 @@ public class AchievementHandler
     {
         if(event.smelting.getItem().equals((PopularItems.pinkEssence)))
         {
-            event.player.addStat(PopularMMOs.beauty, 1);
+            event.player.addStat(MMOs.beauty, 1);
         }
     }
 }

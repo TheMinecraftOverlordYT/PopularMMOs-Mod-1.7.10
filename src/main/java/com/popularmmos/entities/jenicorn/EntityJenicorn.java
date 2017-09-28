@@ -1,6 +1,6 @@
 package com.popularmmos.entities.jenicorn;
 
-import com.popularmmos.main.PopularMMOs;
+import com.popularmmos.main.MMOs;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -216,7 +216,7 @@ public class EntityJenicorn extends EntityAnimal implements IBossDisplayData
         {
             if (this.riddenByEntity == null) {
                 player.mountEntity(this);
-                player.triggerAchievement(PopularMMOs.pixelsus);
+                player.triggerAchievement(MMOs.pixelsus);
                 return true;
             }
             if (this.riddenByEntity != null) {

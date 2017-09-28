@@ -12,8 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
-@Mod(modid = PopularMMOs.MODID, version = PopularMMOs.VERSION)
-public class PopularMMOs
+@Mod(modid = MMOs.MODID, version = MMOs.VERSION)
+public class MMOs
 {
     @SidedProxy(clientSide = "com.popularmmos.main.ClientProxy", serverSide = "com.popularmmos.main.CommonProxy")
     public static CommonProxy proxy;

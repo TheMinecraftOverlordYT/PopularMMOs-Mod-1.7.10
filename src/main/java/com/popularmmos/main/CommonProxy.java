@@ -6,10 +6,10 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.entity.Entity;
 
-public class CommonProxy {
-
-
+public class CommonProxy
+{
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e)
     {
@@ -33,8 +33,6 @@ public class CommonProxy {
     {
 
     }
-    public void registerRenderThings()
-    {
-
-    }
+    public void registerRenderThings() {}
+    public void generatePinkParticles(Entity theEntity) {}
 }

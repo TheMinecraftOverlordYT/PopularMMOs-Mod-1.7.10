@@ -3,6 +3,7 @@ package com.popularmmos.entities.jenboss;
 import com.popularmmos.entities.jenboss.ai.AIBeam;
 import com.popularmmos.entities.jenboss.ai.AIJenLargeThrow;
 import com.popularmmos.entities.jenboss.ai.AISwordStrike;
+import com.popularmmos.main.MMOs;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -29,6 +30,7 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
     private Minecraft mc;
     public int ticksAlive;
     private final int index = 20;
+    private boolean isShieldUp, hasShieldActivated = false;
 
     public EntityJenBoss(World world)
     {
@@ -115,7 +117,7 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
 //            while (iterator.hasNext())
 //            {
 //                EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-//                entityplayer.triggerAchievement(PopularMMOs.popularmmos);
+//                entityplayer.triggerAchievement(MMOs.popularmmos);
 //            }
 //        }
 //    }
@@ -155,10 +157,43 @@ public class EntityJenBoss extends EntityMob implements IBossDisplayData, IAnima
             animTick++;
     }
 
+    private void handleShield()
+    {
+        if(this.getHealth() <= this.getMaxHealth() / 2 && rand.nextInt(2) == 1 && !hasShieldActivated)
+        {
+            activateShield();
+        }
+
+    }
+
+    private void activateShield()
+    {
+        this.playSound("popular:BubbleActivate", 10, 2);
+        isShieldUp = true;
+        hasShieldActivated = true;
+    }
+
+    public void breakShield()
+    {
+        //this.playSound(shieldBreak, 10, 10);
+        isShieldUp = false;
+    }
+
+    public boolean getShield()
+    {
+        return isShieldUp;
+    }
+
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        if(worldObj.getEntityByID(getObject()) != null && this.animID == 0)
+        handleShield();
+        if(isShieldUp)
+        {
+            for(int i = 0; i < 5; i++)
+                MMOs.proxy.generatePinkParticles(this);
+        }
+            if(worldObj.getEntityByID(getObject()) != null && this.animID == 0)
             switch(this.rand.nextInt(3))
             {
                 case 0:

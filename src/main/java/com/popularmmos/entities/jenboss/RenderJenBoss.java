@@ -1,5 +1,6 @@
 package com.popularmmos.entities.jenboss;
 
+import com.popularmmos.main.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -140,6 +141,32 @@ public class RenderJenBoss extends RenderLiving
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glDepthMask(true);
     }
+
+    protected void passSpecialRender(EntityLivingBase parEntity, double parX, double parY, double parZ)
+    {
+        super.passSpecialRender(parEntity, parX, parY, parZ);
+        if(parEntity instanceof EntityJenBoss)
+        {
+            EntityJenBoss jen = (EntityJenBoss)parEntity;
+            if(jen.getShield())
+            {
+                GL11.glPushMatrix();
+                GL11.glTranslated(parX, parY + parEntity.height / 2, parZ);
+                GL11.glScalef(9.0F, 9.0F, 9.0F);
+                GL11.glEnable(GL11.GL_BLEND);
+                GL11.glDepthMask(false);
+
+                GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+                GL11.glColor4f(1.000F, 0.412F, 0.706F, 0.7F);
+                GL11.glEnable(GL11.GL_ALPHA_TEST);
+                GL11.glCallList(ClientProxy.sphereIdOutside);
+
+                GL11.glCallList(ClientProxy.sphereIdInside);
+                GL11.glPopMatrix();
+            }
+        }
+    }
+
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probability, the class Render is generic

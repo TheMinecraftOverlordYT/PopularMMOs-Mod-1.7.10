@@ -21,13 +21,12 @@ public class PopularEntities
 
     public static void registerEntity()
     {
-        createEntity(EntityPat.class, "PopularMMOs", 0x0, 0x0);
+        createEntity(EntityPat.class, "MMOs", 0x0, 0x0);
         createEntity(EntityJenicorn.class, "Jenicorn", 0xFF33CC, 0xFF66CC);
         createEntity(EntityJenBoss.class, "Jen", 0xFF66CC, 0xFF33CC);
 
         createNonLivingEntity(EntitySmallWeight.class, "ItemSmallWeight");
         createNonLivingEntity(EntityLargeWeight.class, "largeWeight");
-        createNonLivingEntity(EntityBeam.class, "beam");
 
         createNonLivingEntity(EntityLightningPink.class, "lightning");
     }
@@ -36,7 +35,7 @@ public class PopularEntities
     {
         int randomID = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
-        EntityRegistry.registerModEntity(entityClass, entityName, randomID, PopularMMOs.MODID, 30, 1, true);
+        EntityRegistry.registerModEntity(entityClass, entityName, randomID, MMOs.MODID, 30, 1, true);
         //probability, minimum group size, max group size, type of creature, biome(s) to spawn in
         if (entityName.equals("Jenicorn"))
         {
@@ -50,7 +49,7 @@ public class PopularEntities
     {
         int randomID = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
-        EntityRegistry.registerModEntity(entityClass, entityName, randomID, PopularMMOs.MODID, 66, 1, true);
+        EntityRegistry.registerModEntity(entityClass, entityName, randomID, MMOs.MODID, 66, 1, true);
     }
 
     private static void createEgg(int randomID, int solidColor, int spotColor)

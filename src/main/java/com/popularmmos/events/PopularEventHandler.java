@@ -1,24 +1,47 @@
-package com.popularmmos.main;
+package com.popularmmos.events;
 
+import com.popularmmos.entities.jenboss.EntityJenBoss;
 import com.popularmmos.entities.pat.EntityPat;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class PopularEvents extends Gui
+public class PopularEventHandler extends Gui
 {
 
     private Minecraft mc = Minecraft.getMinecraft();
     private EntityPat pat;
     private static final ResourceLocation deathOverlay = new ResourceLocation("popular:textures/entities/ClosingScreenDeath.png");
+    private int shieldHealth = 200;
+
+    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public void onEvent(LivingAttackEvent event)
+    {
+        Entity entity = event.entity;
+        if(entity instanceof EntityJenBoss)
+        {
+            EntityJenBoss jen = (EntityJenBoss)entity;
+            if(jen.getShield())
+            {
+                if(shieldHealth > 0)
+                    shieldHealth -= event.ammount;
+                else
+                    jen.breakShield();
+                event.setCanceled(true);
+            }
+        }
+    }
 
     /*private Minecraft mc = Minecraft.getMinecraft();
     private EntityJenicorn pixelsus;

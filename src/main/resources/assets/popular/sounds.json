@@ -3,6 +3,10 @@
     "PatGrunt": {"category": "master", "sounds": ["PatGrunt"]},
     "PatSpawn": {"category": "master", "sounds": ["PatSpawn"]},
     "PatWeightThrow": {"category": "master", "sounds": ["PatWeightThrow"]},
-    "WingFlap" : {"category": "master", "sounds": ["WingFlap"]}
+    "WingFlap" : {"category": "master", "sounds": ["WingFlap"]},
+    "BubbleActivate" : {"category": "master", "sounds": ["BubbleActivate"]},
+    "BubbleDeflectArrow" : {"category" : "master", "sounds": ["BubbleDeflectArrow"]},
+    "BubbleDeflectDamage" : {"category" : "master", "sounds": ["BubbleDeflectDamage"]},
+    "BubbleBreak" : {"category" : "master", "sounds": ["BubbleBreak"]}
 }
     
