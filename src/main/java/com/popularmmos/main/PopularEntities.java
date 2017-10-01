@@ -1,6 +1,7 @@
 package com.popularmmos.main;
 
 import com.popularmmos.entities.jenboss.EntityJenBoss;
+import com.popularmmos.explosions.EntityPinkTNTPrimed;
 import com.popularmmos.entities.jenboss.subsidiaries.lightningPink.EntityLightningPink;
 import com.popularmmos.entities.jenicorn.EntityJenicorn;
 import com.popularmmos.entities.pat.EntityPat;
@@ -29,6 +30,7 @@ public class PopularEntities
         createNonLivingEntity(EntityLargeWeight.class, "largeWeight");
 
         createNonLivingEntity(EntityLightningPink.class, "lightning");
+        createNonLivingEntity(EntityPinkTNTPrimed.class, "pinkTNT");
     }
 
     public static void createEntity(Class entityClass, String entityName, int solidColor, int spotColor)

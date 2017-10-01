@@ -17,6 +17,8 @@ import com.popularmmos.entities.pat.largeweight.RenderLargeWeight;
 import com.popularmmos.entities.pat.smallweight.EntitySmallWeight;
 import com.popularmmos.entities.pat.smallweight.RenderSmallWeight;
 import com.popularmmos.events.PopularEventHandler;
+import com.popularmmos.explosions.EntityPinkTNTPrimed;
+import com.popularmmos.explosions.RenderPinkTNTPrimed;
 import com.popularmmos.items.largeWeight.RenderItemLargeWeight;
 import com.popularmmos.items.pinkSword.RenderPinkSword;
 import com.popularmmos.items.smallWeight.RenderItemSmallWeight;
@@ -54,6 +56,8 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerEntityRenderingHandler(EntityLargeWeight.class, new RenderLargeWeight());
 
         RenderingRegistry.registerEntityRenderingHandler(EntityLightningPink.class, new RenderLightningPink());
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityPinkTNTPrimed.class, new RenderPinkTNTPrimed());
     }
 
     @Override

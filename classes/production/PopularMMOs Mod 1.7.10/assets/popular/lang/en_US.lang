@@ -14,6 +14,7 @@ itemGroup.popularTabs=The PopularMMOs Mod
 entity.PopularMMOs.name=PopularMMOs
 entity.Jenicorn.name=Pixelsus
 entity.Jen.name=Evil Jen
+entity.pinkTnT.name=Pink TNT
 
 death.attack.upperCut=%1$s felt the power of Furious Destroyer
 death.attack.smallWeight=%1$s took a weight to the face
@@ -25,6 +26,7 @@ death.attack.downwardsSwordSlice=%1$s had their skull split by Evil Jen
 
 tile.pinkOre.name=Beautiful Ore
 tile.patFace.name=Popular Block
+tile.pinkTNT.name=Pink TNT
 
 achievement.achievementPink=Beautiful Ores
 achievement.achievementPixelsus=GORGEOUS!

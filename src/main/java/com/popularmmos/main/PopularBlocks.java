@@ -1,5 +1,6 @@
 package com.popularmmos.main;
 
+import com.popularmmos.explosions.BlockPinkTNT;
 import com.popularmmos.blocks.DecorationBlock;
 import com.popularmmos.blocks.PinkOre;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,9 +14,10 @@ public class PopularBlocks
         initThings();
         registerThings();
     }
+
     public static Block pinkOre;
     public static Block patFace;
-
+    public static Block pinkTNT;
 
     public static void initThings(){
 
@@ -23,11 +25,14 @@ public class PopularBlocks
 
         patFace = new DecorationBlock(Material.rock).setBlockName("patFace").setBlockTextureName("popular:patFace").setCreativeTab(PopularItems.popularTab).setHardness(2);
 
+        pinkTNT = new BlockPinkTNT().setBlockName("pinkTNT").setCreativeTab(PopularItems.popularTab).setBlockTextureName("pinktnt");
+
     }
     public static void registerThings(){
 
-        GameRegistry.registerBlock(pinkOre, "topazOre");
-        GameRegistry.registerBlock(patFace, "fopalOre");
+        GameRegistry.registerBlock(pinkOre, "pinkOre");
+        GameRegistry.registerBlock(patFace, "patFace");
+        GameRegistry.registerBlock(pinkTNT, "pinkTNT");
 
     }
 }
